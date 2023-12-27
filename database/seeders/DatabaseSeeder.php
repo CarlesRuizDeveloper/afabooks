@@ -6,6 +6,8 @@ namespace Database\Seeders;
 
 use App\Models\Libro;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(LibroSeeder::class);
+        //$this->call(LibroSeeder::class);
+        Libro::factory(50)->create();
+        User::factory(10)->create();
     }
 }
