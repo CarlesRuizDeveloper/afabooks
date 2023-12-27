@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LibroController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',HomeController::class);
+
+Route::get('libros', [ LibroController::class , 'index' ]);
+
+Route::get('libros/create',[ LibroController::class , 'create']);
+
+Route::get('libros/{libro}', [LibroController::class , 'show']);
