@@ -16,8 +16,8 @@ use App\Http\Controllers\LibroController;
 
 Route::get('/',HomeController::class);
 
-Route::get('libros', [ LibroController::class , 'index' ]);
+Route::get('libros', [ LibroController::class , 'index' ])->name('libros.index');
 
-Route::get('libros/create',[ LibroController::class , 'create']);
+Route::get('libros/create',[ LibroController::class , 'create'])->name('libros.create');
 
-Route::get('libros/{libro}', [LibroController::class , 'show']);
+Route::get('libros/{id}', [LibroController::class , 'show'])->name('libros.show');
