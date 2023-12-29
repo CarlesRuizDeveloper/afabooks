@@ -7,6 +7,7 @@ use App\Models\Libro;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Libro>
  */
+/*
 class LibroFactory extends Factory
 {
     protected $model = Libro::class;
@@ -14,7 +15,7 @@ class LibroFactory extends Factory
      * Define the model's default state.
      *
      * @return array<string, mixed>
-     */
+     *//*
     public function definition(): array
     {
         return [

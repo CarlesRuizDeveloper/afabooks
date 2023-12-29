@@ -4,19 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Libros extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('libros', function(Blueprint $table){
-            $table->id();
-            $table->string('codigo');
-            $table->string('marca');
-            $table->string('observaciones');
-            $table->string('curso');    
+        Schema::create('cursos', function (Blueprint $table) {
+            $table->id('courseID');
+            $table->string('titulo');
+            $table->date('fecha_publicacion');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ class Libros extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('libros');
+        Schema::dropIfExists('cursos');
     }
 };
