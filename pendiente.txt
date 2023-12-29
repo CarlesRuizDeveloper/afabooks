@@ -1,1 +1,13 @@
 crear grupos de rutas.
+---------------------------------------------------
+Rutas antes de breeze:
+
+Route::get('/',HomeController::class);
+
+Route::get('libros', [ LibroController::class , 'index' ])->name('libros.index');
+
+Route::get('libros/create',[ LibroController::class , 'create'])->name('libros.create');
+
+Route::get('libros/{id}', [LibroController::class , 'show'])->name('libros.show');
+
+--------------------------------------------------------
