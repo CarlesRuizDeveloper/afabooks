@@ -11,3 +11,30 @@ Route::get('libros/create',[ LibroController::class , 'create'])->name('libros.c
 Route::get('libros/{id}', [LibroController::class , 'show'])->name('libros.show');
 
 --------------------------------------------------------
+
+Cursos:
+courseID (clave primaria)
+título del curso
+fecha de publicación
+
+Libros:
+bookID (clave primaria)
+userID (clave externa que se relaciona con la tabla de Usuarios, donante)
+courseID (clave externa que se relaciona con la tabla de Cursos)
+codigo
+descripcion
+marca
+observaciones
+categoria (clave externa que se relaciona con la tabla de Categorias)
+fecha de publicación
+estado (disponible, solicitado, entregado, etc.)
+
+Categorias:
+IDCategoria (clave primaria)
+categorias
+
+Solicitudes:
+requestID (clave primaria)
+userID (clave externa que se relaciona con la tabla de Usuarios, solicitante)
+bookID (clave externa que se relaciona con la tabla de Libros)
+estado de la solicitud (solicitado, aceptada, rechazada, entregada, disponible)
