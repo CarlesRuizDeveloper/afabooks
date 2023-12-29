@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('libros', function (Blueprint $table) {
             $table->id('bookID');
-            $table->foreignId('userID')->constrained('users');
-            $table->foreignId('courseID'); // Sin la restricción de clave externa
+            $table->unsignedBigInteger('userID');
+            $table->foreign('userID')->references('id')->on('users');
+            $table->unsignedBigInteger('courseID');
+            $table->foreign('courseID')->references('courseID')->on('cursos');
             $table->string('codigo');
             $table->text('descripcion');
             $table->string('marca');
             $table->text('observaciones')->nullable();
-            $table->foreignId('categoria'); // Sin la restricción de clave externa
+            $table->unsignedBigInteger('categoria');
+            $table->foreign('categoria')->references('IDCategoria')->on('categorias');
             $table->date('fecha_publicacion');
             $table->enum('estado', ['disponible', 'solicitado', 'entregado'])->default('disponible');
             $table->timestamps();

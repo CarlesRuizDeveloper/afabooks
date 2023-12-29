@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('courseID');
             $table->string('titulo');
             $table->date('fecha_publicacion');
+            $table->unsignedBigInteger('categoria'); // Cambié a unsignedBigInteger
+            $table->foreign('categoria')->references('IDCategoria')->on('categorias');
             $table->timestamps();
         });
     }

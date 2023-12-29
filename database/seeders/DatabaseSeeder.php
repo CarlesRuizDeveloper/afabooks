@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Libro;
+//use App\Models\Libro; Está borrado por problemas en migraciones
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
