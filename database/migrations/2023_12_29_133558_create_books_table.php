@@ -11,24 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('libros', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id('bookID');
-            $table->unsignedBigInteger('userID');
-            $table->foreign('userID')->references('id')->on('users');
-            $table->unsignedBigInteger('courseID');
-            $table->foreign('courseID')->references('courseID')->on('cursos');
+            $table->foreignId('userID')->constrained('users');
+            $table->foreignId('courseID')->constrained('courses', 'courseID');
             $table->string('codigo');
             $table->text('descripcion');
             $table->string('marca');
             $table->text('observaciones')->nullable();
-            $table->unsignedBigInteger('categoria');
-            $table->foreign('categoria')->references('IDCategoria')->on('categorias');
+            $table->foreignId('IDCategoria')->constrained('categories', 'IDCategoria');
             $table->date('fecha_publicacion');
             $table->enum('estado', ['disponible', 'solicitado', 'entregado'])->default('disponible');
             $table->timestamps();
         });
-       
-       
     }
 
     /**
@@ -36,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('libros');
+        Schema::dropIfExists('books');
     }
 };

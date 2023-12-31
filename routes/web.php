@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LibroController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,12 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', [ LibroController::class , 'index' ])->name('libros.index');
+Route::get('/', [ BookController::class , 'index' ])->name('libros.index');
 
-Route::get('libros', [ LibroController::class , 'index' ])->name('libros.index');
+//Route::get('/', [ CourseController::class , 'indexCourses' ])->name('libros.index');
 
-Route::get('libros/create',[ LibroController::class , 'create'])->middleware(['auth', 'verified'])->name('libros.create');
+Route::get('libros', [ BookController::class , 'index' ])->name('libros.index');
 
-Route::get('libros/{id}', [LibroController::class , 'show'])->middleware(['auth', 'verified'])->name('libros.show');
+Route::get('libros/create',[ BookController::class , 'create'])->middleware(['auth', 'verified'])->name('libros.create');
+
+Route::get('libros/{id}', [BookController::class , 'show'])->middleware(['auth', 'verified'])->name('libros.show');
 
 require __DIR__.'/auth.php';

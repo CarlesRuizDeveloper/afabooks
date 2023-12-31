@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cursos', function (Blueprint $table) {
-            $table->id('courseID');
-            $table->string('titulo');
-            $table->date('fecha_publicacion');
-            $table->unsignedBigInteger('categoria'); // Cambié a unsignedBigInteger
-            $table->foreign('categoria')->references('IDCategoria')->on('categorias');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id('IDCategoria');
+            $table->string('categoria');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cursos');
+        Schema::dropIfExists('categories');
     }
 };

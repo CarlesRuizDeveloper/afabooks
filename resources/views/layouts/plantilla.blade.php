@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>@yield('title')</title>
 </head>
@@ -32,8 +32,8 @@
     @yield('content')
 
     <footer>
-        <div class="bg-red-600">
-            <p>Powered by</p>
+        <div class="bg-red-800 mt-4">
+            <p>Powered by<br>test</p>
         </div>
     </footer>
 </body>
