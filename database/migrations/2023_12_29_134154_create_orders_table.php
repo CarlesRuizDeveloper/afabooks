@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('solicitudes', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id('requestID');
-            $table->unsignedBigInteger('userID');
-            $table->foreign('userID')->references('id')->on('users');
-            $table->unsignedBigInteger('bookID');
-            $table->foreign('bookID')->references('bookID')->on('libros');
+            $table->foreignId('userID')->constrained('users');
+            $table->foreignId('bookID')->constrained('books', 'bookID'); // Ajusta el nombre de la columna si es diferente
             $table->enum('estado_solicitud', ['solicitado', 'aceptado', 'rechazado', 'entregado', 'disponible']);
             $table->timestamps();
         });
-        
+
     }
 
     /**
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('solicitudes');
+        Schema::dropIfExists('orders');
     }
 };
