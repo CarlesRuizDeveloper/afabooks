@@ -1,29 +1,13 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaForm')
 
 @section('title', 'Añadir libro')
 
-@section('content')
-    <h1>aqui creamos libro</h1>
-    <form>
-        <label>
-            Categoria:
-            <input type="text" name="IDCategoria">
-        </label>
-        <label>
-            Curso:
-            <input type="text" name="courseID">
-        </label>
-        <label>
-            Título:
-            <input type="text" name="descripcion">
-        </label>
-        <label>
-            Editorial:
-            <input type="text" name="marca">
-        </label>
-        <label>
-            Observaciones:
-            <textarea type="text" name="observaciones"></textarea>
-        </label>
-    </form>
+@section('form')
+
+    @section('formTitle', 'Publicar libro')
+
+    @section('formAction', route('libros.store'))
+
+    @section('textButton', 'Publicar')
+
 @endsection

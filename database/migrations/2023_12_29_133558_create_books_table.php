@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id('bookID');
+            $table->id('id');// si no le llamo id no me funciona el show
             $table->foreignId('userID')->constrained('users');
             $table->foreignId('courseID')->constrained('courses', 'courseID');
-            $table->string('codigo');
+            $table->string('codigo')->nullable();
             $table->text('descripcion');
-            $table->string('marca');
+            $table->string('marca')->nullable();
             $table->text('observaciones')->nullable();
             $table->foreignId('IDCategoria')->constrained('categories', 'IDCategoria');
-            $table->date('fecha_publicacion');
+            //$table->date('fecha_publicacion');
             $table->enum('estado', ['disponible', 'solicitado', 'entregado'])->default('disponible');
             $table->timestamps();
         });
