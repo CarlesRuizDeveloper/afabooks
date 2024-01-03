@@ -2,7 +2,7 @@ crear grupos de rutas.
 ---------------------------------------------------
 
 pq no puedo llamar en la tabla books a la id como bookID y solo me deja ver el show con id
-Crear las migraciones correctamente
+Crear las migraciones correctamente y añadir el ststus 0 para borrar
 Eliminar fecha_publicacion de las migraciones
 
 Mirar de crear una funcion para convertir el idcategoria en txt y que se llame al metodo
@@ -12,3 +12,5 @@ que sean nulables los campos de books menos el titulo
 buscador
 
 nav con los ciclos y cursos
+
+No puedo hacer asignacion mmasiva todavía por el user ID

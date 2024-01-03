@@ -60,6 +60,17 @@
                 </label>
                 <textarea name="observaciones" id="observaciones" placeholder="Este campo no es obligatorio" class="w-full p-2 border rounded" readonly>{{$libro->observaciones }}</textarea>
             </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="categoria">
+                    Estado:
+                </label>
+                <select name="estado" id="estado" class="w-full p-2 border rounded" disabled>
+                    <option value="" disabled>Selecciona un estado</option>
+                    <option value="disponible" {{ $libro->estado == "disponible" ? 'selected' : '' }}>Disponible</option>
+                    <option value="solicitado" {{ $libro->estado == "solicitado" ? 'selected' : '' }}>Solicitado</option>
+                    <option value="entregado" {{ $libro->estado == "entregado" ? 'selected' : '' }}>Entregado</option>
+                </select>
+            </div>
         </form>
     @if(Auth::check() && Auth::user()->id == $libro->userID)
         <a href="{{ route('libros.edit', $libro)}}">Editar</a>

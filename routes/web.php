@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Mail\ContactoMailable;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,17 +33,17 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [ BookController::class , 'index' ])->name('libros.index');
 
-Route::get('libros', [ BookController::class , 'index' ])->name('libros.index');
+Route::resource('libros', BookController::class);
 
-Route::get('libros/create',[ BookController::class , 'create'])->middleware(['auth', 'verified'])->name('libros.create');
+Route::view('libros.contacto', 'libros.contacto')->name('libros.contacto');
 
-Route::post('libros',[ BookController::class , 'store'])->middleware(['auth', 'verified'])->name('libros.store');
+Route::get('contacto', function(){
+    Mail::to('crmfeina@gmail.com')
+        ->send(new ContactoMailable);
 
-Route::get('libros/{id}', [BookController::class , 'show'])->middleware(['auth', 'verified'])->name('libros.show');
+        return "Correo enviado";
+})->name('contacto');
 
-Route::get('libros/{libro}/edit', [BookController::class , 'edit'])->middleware(['auth', 'verified'])->name('libros.edit');
-
-Route::put('libros/{libro}', [BookController::class, 'update'])->middleware(['auth', 'verified'])->name('libros.update');
 
 
 require __DIR__.'/auth.php';
