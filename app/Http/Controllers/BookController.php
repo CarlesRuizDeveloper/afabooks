@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeLibro;
 use App\Models\Book;
 use App\Models\Course;
 use DateTime;
@@ -29,13 +30,8 @@ class BookController extends Controller
         return view('libros.create', compact('courses'));
     }
 
-    public function store(Request $request)
+    public function store(StoreLibro $request)
     {
-        $request->validate([
-            'IDCategoria' => 'required',
-            'courseID' => 'required',
-            'descripcion' => 'required'
-        ]);
         $libro = new Book();
 
         $userID = auth()->user();
@@ -49,7 +45,7 @@ class BookController extends Controller
         
         $libro->save();
 
-       return redirect()->route('libros.show', $libro->id);//se puede omitir el id, ya que Laravel lo hace-> ya lo uso en el update     
+       return redirect()->route('libros.show', $libro->id);//se puede omitir el id, ya que Laravel lo hace-> yo lo uso en el update     
     }
 
  
@@ -71,18 +67,15 @@ class BookController extends Controller
 
     public function update( Request $request, Book $libro)
     {        
-        $courses = Course::all();
         $libro->IDCategoria = $request->IDCategoria;
         $libro->codigo = $request->codigo;
         $libro->courseID = $request->courseID;      
         $libro->descripcion = $request->descripcion;
         $libro->marca = $request->marca;
-        $libro->observaciones = $request->observaciones;
- 
+        $libro->observaciones = $request->observaciones; 
         
         $libro->save();
         return redirect()->route('libros.show', $libro);
-
     }
 
 

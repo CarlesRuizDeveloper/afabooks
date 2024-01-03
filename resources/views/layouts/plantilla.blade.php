@@ -10,10 +10,9 @@
     <header class="bg-red-800 fixed top-0 w-full z-50">
         <div class="flex justify-between items-center p-4">
             <div class="flex items-center">
-                <div class="bg-white p-2 rounded mr-2">
+                <a href="{{ route('libros.index') }}" class="bg-white p-2 rounded mr-2">
                     <img src="{{ asset('images/logovedrunagracia.png') }}" alt="Logo" class="h-12">
-                </div>
-                <!-- Puedes ajustar la cantidad de espacio alrededor del logo cambiando el valor de `mr-2` -->
+                </a>
             </div>
             <div class="flex items-center space-x-4">
                 @auth

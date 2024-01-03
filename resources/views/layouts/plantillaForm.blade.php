@@ -35,28 +35,30 @@
                     Código:
                 </label>
                 
-                <input type="text" name="codigo" id="codigo" class="w-full p-2 border rounded">
+                <input type="text" name="codigo" id="codigo" placeholder="Este campo no es obligatorio" class="w-full p-2 border rounded">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="titulo">
                     Título:
                 </label>
                 <input type="text" name="descripcion" id="titulo" class="w-full p-2 border rounded">
-                @error('descripcion')
-                    {{ $message }}
-                @enderror
+            @error('descripcion')
+                <br>
+                <span>*{{ $message }}</span>
+                <br>
+            @enderror
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="editorial">
                     Editorial:
                 </label>
-                <input type="text" name="marca" id="editorial" placeholder="No es obligatorio" class="w-full p-2 border rounded">
+                <input type="text" name="marca" id="editorial" placeholder="Este campo no es obligatorio" class="w-full p-2 border rounded">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="observaciones">
                     Observaciones:
                 </label>
-                <textarea name="observaciones" id="observaciones" placeholder="No es obligatorio" class="w-full p-2 border rounded"></textarea>
+                <textarea name="observaciones" id="observaciones" placeholder="Este campo no es obligatorio" class="w-full p-2 border rounded"></textarea>
             </div>
             <div class="flex items-center justify-between">
                 <button type="submit" class="bg-green-700 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
