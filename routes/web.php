@@ -31,17 +31,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [ BookController::class , 'index' ])->name('libros.index');
 
-Route::get('libros', [ BookController::class , 'index' ])->name('libros.index');
-
-Route::get('libros/create',[ BookController::class , 'create'])->middleware(['auth', 'verified'])->name('libros.create');
-
-Route::post('libros',[ BookController::class , 'store'])->middleware(['auth', 'verified'])->name('libros.store');
-
-Route::get('libros/{id}', [BookController::class , 'show'])->middleware(['auth', 'verified'])->name('libros.show');
-
-Route::get('libros/{libro}/edit', [BookController::class , 'edit'])->middleware(['auth', 'verified'])->name('libros.edit');
-
-Route::put('libros/{libro}', [BookController::class, 'update'])->middleware(['auth', 'verified'])->name('libros.update');
+Route::resource('libros', BookController::class);
 
 
 require __DIR__.'/auth.php';
