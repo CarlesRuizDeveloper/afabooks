@@ -12,3 +12,5 @@ que sean nulables los campos de books menos el titulo
 buscador
 
 nav con los ciclos y cursos
+
+No puedo hacer asignacion mmasiva todavía por el user ID

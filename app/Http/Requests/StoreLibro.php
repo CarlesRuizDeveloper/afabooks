@@ -25,7 +25,7 @@ class storeLibro extends FormRequest
            
                 'IDCategoria' => 'required',
                 'courseID' => 'required',
-                'descripcion' => 'required'
+                'descripcion' => 'required'               
            
         ];
     }

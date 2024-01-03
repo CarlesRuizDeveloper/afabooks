@@ -24,7 +24,9 @@ class UpdateLibro extends FormRequest
         return [
             'IDCategoria' => 'required',
             'courseID' => 'required',
-            'descripcion' => 'required'
+            'descripcion' => 'required',
+            'estado' => 'reuired'
+
         ];
     }
 }

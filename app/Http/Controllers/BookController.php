@@ -12,15 +12,23 @@ class BookController extends Controller
 {
     public function index()
     {
-        // Obtener los últimos 8 libros de texto
-        $librosTexto = Book::where('IDCategoria', 1)->orderBy('id', 'desc')->take(8)->get();
+        $librosTexto = Book::where('IDCategoria', 1)
+            ->where('estado', 'disponible')
+            ->orderBy('id', 'desc')
+            ->take(8)
+            ->get();
     
-        $librosLectura = Book::where('IDCategoria', 2)->orderBy('id', 'desc')->take(8)->get();
+        $librosLectura = Book::where('IDCategoria', 2)
+            ->where('estado', 'disponible')
+            ->orderBy('id', 'desc')
+            ->take(8)
+            ->get();
     
         $courses = Course::all();
     
         return view('libros.index', compact('librosTexto', 'librosLectura', 'courses'));
     }
+    
     
 
     public function create()
@@ -43,7 +51,9 @@ class BookController extends Controller
         $libro->marca = $request->marca;
         $libro->observaciones = $request->observaciones;
         
-        $libro->save();
+        
+        return $libro;
+
 
        return redirect()->route('libros.show', $libro->id);//se puede omitir el id, ya que Laravel lo hace-> yo lo uso en el update     
     }
@@ -73,6 +83,7 @@ class BookController extends Controller
         $libro->descripcion = $request->descripcion;
         $libro->marca = $request->marca;
         $libro->observaciones = $request->observaciones; 
+        $libro->estado = $request->estado;
         
         $libro->save();
         return redirect()->route('libros.show', $libro);
