@@ -89,7 +89,34 @@ class BookController extends Controller
         return redirect()->route('libros.show', $libro);
     }
 
+   
+    public function showCurso($id)
+    {
+        $curso = Course::find($id);
+        $courses = Course::all();
+    
+        if (!$curso) {
+            return redirect()->route('libros.index')->with('error', 'Curso no encontrado');
+        }
+    
+        $librosTexto = Book::where('IDCategoria', 1)
+            ->where('courseID', $id)
+            ->where('estado', 'disponible')
+            ->orderBy('id', 'desc')
+            ->get();
+    
+        $librosLectura = Book::where('IDCategoria', 2)
+            ->where('courseID', $id)
+            ->where('estado', 'disponible')
+            ->orderBy('id', 'desc')
+            ->get();
+    
+        return view('libros.curso', compact('curso','courses', 'librosTexto', 'librosLectura'));
+    }
+    
+    
 
 
+    
 
 }

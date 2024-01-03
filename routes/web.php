@@ -37,6 +37,9 @@ Route::resource('libros', BookController::class);
 
 Route::view('libros.contacto', 'libros.contacto')->name('libros.contacto');
 
+Route::get('libros/curso/{id}', [BookController::class, 'showCurso'])->name('libros.curso');
+
+
 Route::get('contacto', function(){
     Mail::to('crmfeina@gmail.com')
         ->send(new ContactoMailable);
