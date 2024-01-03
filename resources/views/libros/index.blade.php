@@ -3,60 +3,95 @@
 @section('title', 'Home')
 
 @section('content')
-    <h1>pagina principal libros</h1>   
-    
-    <a href="{{route('libros.create')}}" >Donar libro</a>
-    <ul>
-        @foreach ($libros as $libro)
-            <li>
-                <a href="{{route('libros.show', $libro->id)}}" >{{$libro->id}}</a>
-            </li>
-        @endforeach
-    </ul> 
-    <style>
-        .slider-container {
-            width: 80%; /* Ajusta el ancho del slider según tu diseño */
-        }
-    
-        .slider-wrapper {
-            transition: transform 0.5s ease-in-out;
-        }
-    
-        .slide {
-            min-width: 250px; /* Ajusta el ancho de cada slide según tu diseño */
-            margin-right: 20px; /* Espaciado entre slides */
-        }
-    </style>
-    <div class="flex items-center justify-center h-screen">
-        <div class="slider-container overflow-hidden">
-            <div class="slider-wrapper flex transition-transform duration-300 ease-in-out">
-                @foreach ($libros as $libro)
-                    <div class="slide p-4">
-                        <h3 class="text-lg font-semibold">{{ $libro->codigo }}</h3>
-                        <p class="text-sm text-gray-600">{{ $libro->codigo }}</p>
-                        <a href="{{route('libros.show', $libro->id)}}" >{{$libro->id}}</a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
+<div class="max-w-screen-sm mx-auto mt-14 ">
+    <div class="hidden md:block bg-green-200 p-6 rounded-lg shadow-md mx-auto my-2 text-center w-2/3 mt-4 mb-8">
+        <p class="text-gray-700">
+            Muchas Gracias por unirte a nuestra campaña para rutilizar libros.
+            <br>
+            AFA Vedruna Gràcia
+        </p>
     </div>
-    {{$libros->links()}}
+    <div class="md:hidden bg-green-200 p-3 rounded-lg shadow-md mx-4 my-2 text-center mb-8">
+        <p class="text-gray-700">
+            Muchas Gracias por unirte a nuestra campaña para reutilizar libros.
+            <br>
+            AFA Vedruna Gràcia
+        </p>
+    </div>
+
+    <div class="hidden md:block mt" >
+        
+        <a href="{{ route('libros.create') }}" class="block mx-auto mb-8 p-2 bg-green-700 rounded-md text-center text-white md:w-1/4">
+            Donar libros
+        </a>
+    </div>
+    <a href="{{ route('libros.create') }}" class="block mx-auto mb-8 p-2 bg-green-700 rounded-md text-center text-white md:hidden w-1/3">
+        Donar libros
+    </a>
+
+    <h1 class="mb-2 mt-3 font-bold text-xl lg:text-2xl xl:text-3xl ml-4">Libros de texto</h1> 
+    <div class="flex flex-nowrap overflow-x-scroll">  
+        <div class="rounded flex-none w-15 mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-10 p-1  text-sm sm:text-base md:text-base lg:text-base xl:text-base max-h-full flex flex-col items-center justify-center">  
+            <a href="{{ route('libros.create') }}" class="block mb-0.5 p-1 bg-blue-700 rounded-md text-center text-white md:w-3/4">
+                Ver todos
+            </a> 
+        </div>
+        
+        @foreach ($librosTexto as $libro)
+            @if ($libro->IDCategoria == 1)
+            
+            <div class="rounded flex-none bg-blue-200 mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-10 p-1 w-32 text-sm sm:text-base md:text-base lg:text-base xl:text-base max-h-full flex flex-col">
+                <p class="ml-1 block mb-0.5 h-10 overflow-hidden font-bold">{{ $libro->descripcion }}</p>
+            
+            @foreach ($courses as $course)
+                @if ($course->id == $libro->courseID)
+                <p  class="block mb-0.5 h-6 overflow-hidden text-center">{{ $course->titulo }}</p>
+                @endif
+            @endforeach
+            
+            <a href="{{ route('libros.show', $libro->id) }}" class="mt-auto block mx-auto mb-0.5 p-1 bg-green-700 rounded-md text-center text-white md:w-3/4">
+                Ver detalles
+            </a>
+            
+        </div>
+    @endif
+    @endforeach
+    
+    
+   
+    </div>
+    <h1 class="mb-2 mt-3 font-bold text-xl lg:text-2xl xl:text-3xl ml-4">Libros de lectura</h1> 
+
+    <div class="flex flex-nowrap overflow-x-scroll">        
+        <div class="rounded flex-none w-15 mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-10 p-1  text-sm sm:text-base md:text-base lg:text-base xl:text-base max-h-full flex flex-col items-center justify-center">  
+            <a href="{{ route('libros.create') }}" class="block mb-0.5 p-1 bg-pink-700 rounded-md text-center text-white md:w-3/4">
+                Ver todos
+            </a> 
+    </div>
+    
+        @foreach ($librosLectura as $libro)
+            @if ($libro->IDCategoria == 2)
+            
+        <div class="rounded flex-none bg-pink-200 mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-10 p-1 w-32 text-sm sm:text-base md:text-text-base lg:text-base xl:text-base max-h-full flex flex-col">
+            <p class="ml-1 block mb-0.5 h-10 overflow-hidden font-bold">{{ $libro->descripcion }}</p>
+      
+            @foreach ($courses as $course)
+                @if ($course->id == $libro->courseID)
+                    <p  class="block mb-0.5 h-6 overflow-hidden text-center">{{ $course->titulo }}</p>
+                @endif
+            @endforeach
+            
+            <a href="{{ route('libros.show', $libro->id) }}" class="mt-auto block mx-auto mb-0.5 p-1 bg-green-700 rounded-md text-center text-white md:w-3/4">
+                Ver detalles
+            </a>
+            
+            
+        </div>
+    @endif
+    @endforeach
+
+    
+    </div>
+    
+</div>
 @endsection
-
-<script>
-    const slider = document.querySelector('.slider-wrapper');
-    let translateValue = 0;
-
-    function nextSlide() {
-        translateValue -= 270; // Ajusta el valor según el ancho de cada slide + margen
-        slider.style.transform = `translateX(${translateValue}px)`;
-    }
-
-    function prevSlide() {
-        translateValue += 270; // Ajusta el valor según el ancho de cada slide + margen
-        slider.style.transform = `translateX(${translateValue}px)`;
-    }
-</script>
-
-
-

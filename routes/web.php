@@ -1,8 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LibroController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,8 +19,29 @@ use App\Http\Controllers\LibroController;
 
 Route::get('/',HomeController::class);
 
-Route::get('libros', [ LibroController::class , 'index' ])->name('libros.index');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('libros/create',[ LibroController::class , 'create'])->name('libros.create');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-Route::get('libros/{id}', [LibroController::class , 'show'])->name('libros.show');
+Route::get('/', [ BookController::class , 'index' ])->name('libros.index');
+
+Route::get('libros', [ BookController::class , 'index' ])->name('libros.index');
+
+Route::get('libros/create',[ BookController::class , 'create'])->middleware(['auth', 'verified'])->name('libros.create');
+
+Route::post('libros',[ BookController::class , 'store'])->middleware(['auth', 'verified'])->name('libros.store');
+
+Route::get('libros/{id}', [BookController::class , 'show'])->middleware(['auth', 'verified'])->name('libros.show');
+
+Route::get('libros/{libro}/edit', [BookController::class , 'edit'])->middleware(['auth', 'verified'])->name('libros.edit');
+
+Route::put('libros/{libro}', [BookController::class, 'update'])->middleware(['auth', 'verified'])->name('libros.update');
+
+
+require __DIR__.'/auth.php';

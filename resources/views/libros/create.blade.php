@@ -1,7 +1,13 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaForm')
 
 @section('title', 'Añadir libro')
 
-@section('content')
-    <h1>aqui creamos libro</h1>
+@section('form')
+
+    @section('formTitle', 'Publicar libro')
+
+    @section('formAction', route('libros.store'))
+
+    @section('textButton', 'Publicar')
+
 @endsection
