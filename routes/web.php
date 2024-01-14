@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Mail\ContactoMailable;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,27 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [ BookController::class , 'index' ])->name('libros.index');
 
 Route::resource('libros', BookController::class);
+
+Route::view('libros.contacto', 'libros.contacto')->name('libros.contacto');
+
+Route::get('libros/curso/{id}', [BookController::class, 'showCurso'])->name('libros.curso');
+
+Route::get('libros/todos/texto', [BookController::class, 'showAllLibrosTexto'])->name('libros.todos.texto');
+
+Route::get('libros/todos/lectura', [BookController::class, 'showAllLibrosLectura'])->name('libros.todos.lectura');
+
+
+
+
+
+
+Route::get('contacto', function(){
+    Mail::to('crmfeina@gmail.com')
+        ->send(new ContactoMailable);
+
+        return "Correo enviado";
+})->name('contacto');
+
 
 
 require __DIR__.'/auth.php';
