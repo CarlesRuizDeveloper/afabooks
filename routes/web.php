@@ -39,6 +39,14 @@ Route::view('libros.contacto', 'libros.contacto')->name('libros.contacto');
 
 Route::get('libros/curso/{id}', [BookController::class, 'showCurso'])->name('libros.curso');
 
+Route::get('libros/todos/texto', [BookController::class, 'showAllLibrosTexto'])->name('libros.todos.texto');
+
+Route::get('libros/todos/lectura', [BookController::class, 'showAllLibrosLectura'])->name('libros.todos.lectura');
+
+
+
+
+
 
 Route::get('contacto', function(){
     Mail::to('crmfeina@gmail.com')

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="max-w-md mx-auto my-8">
-        <h1 class="text-2xl font-semibold mb-3 text-center">@yield('formTitle')</h1>
+        <h1 class="text-2xl font-semibold mb-3 text-center mt-24">@yield('formTitle')</h1>
         <form action="@yield('formAction')" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             @csrf
             <div class="mb-4">

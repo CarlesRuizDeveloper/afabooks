@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="max-w-md mx-auto my-8">
-        <h1 class="text-2xl font-semibold mb-3 text-center">Ver libro</h1>
+        <h1 class="text-2xl font-semibold mb-3 text-center mt-24">Ver libro</h1>
         <a href="{{ route('libros.index')}}">Volver a inicio</a>
 
         <form action="{{ route('libros.update', $libro) }}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">

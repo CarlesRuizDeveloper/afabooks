@@ -33,7 +33,7 @@
 
     <div class="flex flex-nowrap overflow-x-scroll"> 
         <div class="rounded flex-none w-15 mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-10 p-1  text-sm sm:text-base md:text-base lg:text-base xl:text-base max-h-full flex flex-col items-center justify-center">  
-            <a href="{{ route('libros.create') }}" class="block mb-0.5 p-1 bg-blue-700 rounded-md text-center text-white md:w-3/4">
+            <a href="{{ route('libros.todos.texto') }}" class="block mb-0.5 p-1 bg-blue-700 rounded-md text-center text-white md:w-3/4">
                 Ver todos
             </a> 
         </div>
@@ -65,7 +65,7 @@
 
     <div class="flex flex-nowrap overflow-x-scroll">       
         <div class="rounded flex-none w-15 mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-10 p-1  text-sm sm:text-base md:text-base lg:text-base xl:text-base max-h-full flex flex-col items-center justify-center">  
-            <a href="{{ route('libros.create') }}" class="block mb-0.5 p-1 bg-pink-700 rounded-md text-center text-white md:w-3/4">
+            <a href="{{ route('libros.todos.lectura') }}" class="block mb-0.5 p-1 bg-pink-700 rounded-md text-center text-white md:w-3/4">
                 Ver todos
             </a> 
         </div>
