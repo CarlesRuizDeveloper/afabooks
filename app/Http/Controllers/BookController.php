@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\storeLibro;
 use App\Models\Book;
 use App\Models\Course;
-use DateTime;
 use Illuminate\Http\Request;
+
 
 class BookController extends Controller
 {
@@ -34,8 +34,12 @@ class BookController extends Controller
     public function create()
     {
         $courses = Course::all();
-       
-        return view('libros.create', compact('courses'));
+        $userID = auth()->user();
+        if ($userID) {
+            return view('libros.create', compact('courses'));
+        } else {            
+            return redirect()->route('login');
+        }
     }
 
     public function store(StoreLibro $request)
@@ -90,6 +94,65 @@ class BookController extends Controller
     }
 
 
+    public function showAllLibrosLectura()
+    {
+        $courses = Course::all();
+    
+        $librosLectura = Book::where('IDCategoria', 2)
+            ->where('estado', 'disponible')
+            ->orderBy('id', 'desc')
+            ->get();
+    
+        return view('libros.showAllLectura', compact('courses', 'librosLectura'));
+    }
 
+    
+
+    public function showAllLibrosTexto()
+    {
+        $courses = Course::all();
+
+        $librosTexto = Book::where('IDCategoria', 1)
+            ->where('estado', 'disponible')
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('libros.showAll', compact('courses', 'librosTexto'));
+    }
+
+    
+
+    public function showCurso($id)
+    {
+        $curso = Course::find($id);
+        $courses = Course::all();
+    
+        if (!$curso) {
+            return redirect()->route('libros.index')->with('error', 'Curso no encontrado');
+        }
+    
+        $librosTexto = Book::where('IDCategoria', 1)
+            ->where('courseID', $id)
+            ->where('estado', 'disponible')
+            ->orderBy('id', 'desc')
+            ->get();
+    
+        $librosLectura = Book::where('IDCategoria', 2)
+            ->where('courseID', $id)
+            ->where('estado', 'disponible')
+            ->orderBy('id', 'desc')
+            ->get();
+    
+        return view('libros.curso', compact('curso','courses', 'librosTexto', 'librosLectura'));
+    }
+
+    public function destroy(Book $libro){
+        $libro->delete();
+    }
+    
+    
+
+
+    
 
 }
