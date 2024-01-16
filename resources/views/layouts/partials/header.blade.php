@@ -10,10 +10,10 @@
             @auth
                 <a href="{{ url('/dashboard') }}" class="text-white hover:text-black font-bold">Dashboard</a>
             @else
-                <a href="{{ route('login') }}" class="text-white  hover:text-black font-bold">Log in</a>
+                <a href="{{ route('login') }}" class="text-white  hover:text-black font-bold">Entrar</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="text-white  hover:text-black font-bold">Register</a>
+                    <a href="{{ route('register') }}" class="text-white  hover:text-black font-bold">Registrar-se</a>
                 @endif
             @endauth
         </div>

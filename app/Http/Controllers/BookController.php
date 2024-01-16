@@ -145,6 +145,10 @@ class BookController extends Controller
     
         return view('libros.curso', compact('curso','courses', 'librosTexto', 'librosLectura'));
     }
+
+    public function destroy(Book $libro){
+        $libro->delete();
+    }
     
     
 

@@ -3,10 +3,11 @@
 @section('title', 'Ver todos los libros de texto')
 
 @section('content')
+<div class="mt-50 mb-20">
+    <a href="{{ route('libros.index')}}">Volver a inicio</a>
 
-    <div class="w-100 flex mx-auto my-24">
-        <a href="{{ route('libros.index')}}">Volver a inicio</a>
-
+    <div class="w-100 flex mx-auto my-24 overflow-x-scroll">
+        
         <h1 class="text-2xl font-semibold mb-3 text-center mt-24">Libros de Texto</h1>
 
         @foreach ($librosTexto as $libro)
@@ -30,5 +31,5 @@
     @endforeach
 
     </div>
-
+</div>
 @endsection

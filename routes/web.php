@@ -45,16 +45,12 @@ Route::get('libros/todos/lectura', [BookController::class, 'showAllLibrosLectura
 
 
 
-
-
-
 Route::get('contacto', function(){
     Mail::to('crmfeina@gmail.com')
         ->send(new ContactoMailable);
 
         return "Correo enviado";
 })->name('contacto');
-
 
 
 require __DIR__.'/auth.php';
