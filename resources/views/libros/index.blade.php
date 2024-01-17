@@ -22,11 +22,11 @@
     <div class="hidden md:block mt" >
         
         <a href="{{ route('libros.create') }}" class="block mx-auto mb-8 p-2 bg-green-700 rounded-md text-center text-white md:w-1/4">
-            Donar libros
+            Publicar libros
         </a>
     </div>
     <a href="{{ route('libros.create') }}" class="block mx-auto mb-4 p-2 bg-green-700 rounded-md text-center text-white md:hidden w-1/3">
-        Donar libros
+        Publicar libros
     </a>
 
     <h1 class="mb-2 mt-12 font-bold text-xl lg:text-2xl xl:text-3xl ml-4">Libros de texto</h1> 

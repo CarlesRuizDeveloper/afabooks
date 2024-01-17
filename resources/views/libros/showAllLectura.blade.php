@@ -4,7 +4,8 @@
 
 @section('content')
     <a href="{{ route('libros.index')}}">Volver a inicio</a>
-    <div class="w-100 mx-auto my-24 flex flex-wrap justify-center">
+    <div class="w-100 flex mx-auto my-24 overflow-x-scroll">
+        
         <h1 class="text-2xl font-semibold mb-3 text-center mt-24">Libros de lectura</h1>
 
         @foreach ($librosLectura as $libro)
