@@ -3,7 +3,7 @@
 @section('title', 'Ver todos los libros de lectura')
 
 @section('content')
-    <a href="{{ route('libros.index')}}">Volver a inicio</a>
+    <a href="{{ route('libros.index')}}" class="bg-green-200 p-3 rounded-lg shadow-md mx-4 mt-24 text-center mb-8">Volver a inicio</a>
     <div class="w-100 flex mx-auto my-24 overflow-x-scroll">
         
         <h1 class="text-2xl font-semibold mb-3 text-center mt-24">Libros de lectura</h1>
