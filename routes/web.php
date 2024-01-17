@@ -39,12 +39,9 @@ Route::view('libros.contacto', 'libros.contacto')->name('libros.contacto');
 
 Route::get('libros/curso/{id}', [BookController::class, 'showCurso'])->name('libros.curso');
 
-Route::get('libros/todos/texto', [BookController::class, 'showAllLibrosTexto'])->name('libros.todos.texto');
+Route::get('libros/todos/texto', [BookController::class, 'showAllLibrosTexto'])->name('libros.todos.texto')->middleware('auth');
 
-Route::get('libros/todos/lectura', [BookController::class, 'showAllLibrosLectura'])->name('libros.todos.lectura');
-
-
-
+Route::get('libros/todos/lectura', [BookController::class, 'showAllLibrosLectura'])->name('libros.todos.lectura')->middleware('auth');
 
 
 
@@ -54,7 +51,6 @@ Route::get('contacto', function(){
 
         return "Correo enviado";
 })->name('contacto');
-
 
 
 require __DIR__.'/auth.php';

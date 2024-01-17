@@ -5,7 +5,14 @@
 @section('content')
     <div class="max-w-md mx-auto my-8">
         <h1 class="text-2xl font-semibold mb-3 text-center mt-24">Ver libro</h1>
-        <a href="{{ route('libros.index')}}">Volver a inicio</a>
+        <div style="display: flex; justify-content: space-between;">
+            <a class="bg-green-200 p-3 rounded-lg shadow-md mx-4 text-center mb-2" href="{{ route('libros.index')}} ">Volver a inicio</a>
+        
+            @if(Auth::check() && Auth::user()->id == $libro->userID)
+                <a class="bg-green-200 p-3 rounded-lg shadow-md mx-4 text-center mb-2" href="{{ route('libros.edit', $libro)}}">Editar</a>
+            @endif
+        </div>
+        
 
         <form action="{{ route('libros.update', $libro) }}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             @csrf
@@ -72,8 +79,6 @@
                 </select>
             </div>
         </form>
-    @if(Auth::check() && Auth::user()->id == $libro->userID)
-        <a href="{{ route('libros.edit', $libro)}}">Editar</a>
-    @endif
+
     </div>
 @endsection
