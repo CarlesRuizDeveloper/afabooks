@@ -54,9 +54,9 @@ class BookController extends Controller
         $libro->descripcion = $request->descripcion;
         $libro->marca = $request->marca;
         $libro->observaciones = $request->observaciones;
+        $libro->save();
         
-        
-        return $libro;
+        //return $libro;
 
 
        return redirect()->route('libros.show', $libro->id);//se puede omitir el id, ya que Laravel lo hace-> yo lo uso en el update     
