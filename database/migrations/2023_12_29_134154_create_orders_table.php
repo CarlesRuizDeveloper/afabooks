@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id('requestID');
             $table->foreignId('userID')->constrained('users');
-            $table->foreignId('bookID')->constrained('books', 'bookID'); // Ajusta el nombre de la columna si es diferente
+            $table->foreignId('bookID')->constrained('books'); 
             $table->enum('estado_solicitud', ['solicitado', 'aceptado', 'rechazado', 'entregado', 'disponible']);
             $table->timestamps();
         });

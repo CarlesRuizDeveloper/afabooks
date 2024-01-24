@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id('id');// si no le llamo id no me funciona el show
             $table->foreignId('userID')->constrained('users');
-            $table->foreignId('courseID')->constrained('courses', 'courseID');
+            $table->foreignId('courseID')->constrained('courses');
             $table->string('codigo')->nullable();
             $table->text('descripcion');
             $table->string('marca')->nullable();
